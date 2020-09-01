@@ -14,7 +14,7 @@ const ColoredTitle = ({text='', colors = [], ...props}) => {
       {text.split('').map((c, idx) => (
         c !== ' '
           ? <span key={idx}>{c}</span>
-          : <k> </k>
+          : <em key={idx}> </em>
       ))}
       <style jsx>{styles}</style>
     </div>
