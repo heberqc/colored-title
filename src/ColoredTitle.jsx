@@ -2,6 +2,13 @@ import React from 'react';
 
 const ColoredTitle = ({text='', colors = [], ...props}) => {
   const l = colors.length;
+  const styles = colors.reduce((acc, color, idx) => `
+    ${acc}
+    span:nth-of-type(${l}n+${idx}) {
+      color: ${color};
+    }`,
+    '',
+  );
   return (
     <div {...props}>
       {text.split('').map((c, idx) => (
@@ -9,15 +16,7 @@ const ColoredTitle = ({text='', colors = [], ...props}) => {
           ? <span key={idx}>{c}</span>
           : <k> </k>
       ))}
-      <style jsx>{
-        colors.reduce((acc, color, idx) => `
-          ${acc}
-          span:nth-of-type(${l}n+${idx}) {
-            color: ${color};
-          }`,
-          '',
-        )
-      }</style>
+      <style jsx>{styles}</style>
     </div>
   );
 };
